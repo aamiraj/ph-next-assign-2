@@ -6,7 +6,7 @@ const variantSchema = new Schema(
     type: {
       type: String,
     },
-    variants: {
+    value: {
       type: String,
     },
   },
@@ -20,6 +20,7 @@ const productSchema = new Schema<TProduct>(
     name: {
       type: String,
       required: [true, "Product name is required."],
+      unique: true,
     },
     description: {
       type: String,

@@ -22,6 +22,14 @@ const findAllProductsFromDB = async () => {
   try {
     const results = await Product.find({});
 
+    if (results?.length === 0) {
+      return {
+        success: true,
+        message: "No products found.",
+        data: null,
+      };
+    }
+
     return {
       success: true,
       message: "All products found successfully.",
@@ -39,6 +47,14 @@ const findAllProductsFromDB = async () => {
 const findAProductFromDb = async (id: string) => {
   try {
     const result = await Product.findById(id);
+
+    if (result?.length === 0) {
+      return {
+        success: true,
+        message: "No products found.",
+        data: null,
+      };
+    }
 
     return {
       success: true,
@@ -104,7 +120,7 @@ const findProductsWithSearchTerm = async (searchTerm: string) => {
       return {
         success: true,
         message: `No products found with search term '${searchTerm}'!`,
-        data: results,
+        data: null,
       };
     }
     return {

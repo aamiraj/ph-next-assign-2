@@ -14,6 +14,14 @@ const createAOrderToDb = async (data: TOrder) => {
       };
     }
 
+    if (data?.quantity > product?.inventory?.quantity) {
+      return {
+        success: false,
+        message: "Insufficient quantity available in inventory",
+        data: null,
+      };
+    }
+
     const result = await Order.create(data);
 
     return {
@@ -34,8 +42,16 @@ const findAllOrdersFromDb = async () => {
   try {
     const results = await Order.find({});
 
+    if (results?.length === 0) {
+      return {
+        success: true,
+        message: "No orders found.",
+        data: null,
+      };
+    }
+
     return {
-      success: false,
+      success: true,
       message: "Successfully fetched all the orders.",
       data: results,
     };
@@ -52,6 +68,13 @@ const findOrdersWithEmailFromDb = async (email: string) => {
   try {
     const results = await Order.find({ email });
 
+    if (results?.length === 0) {
+      return {
+        success: true,
+        message: "No orders found for user email!",
+        data: null,
+      };
+    }
     return {
       success: true,
       message: "Orders fetched successfully for user email!",

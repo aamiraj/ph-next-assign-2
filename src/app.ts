@@ -1,5 +1,6 @@
 import express, { NextFunction, Request, Response } from "express";
 import productRouter from "./modules/product/product.route";
+import orderRouter from "./modules/order/order.route";
 
 const app = express();
 
@@ -8,6 +9,7 @@ app.use(express.json());
 
 // router to call products API
 app.use("/api/products", productRouter);
+app.use("/api/orders", orderRouter);
 
 app.get("/", async (req, res) => {
   res.send("It's an e-commerce app!");

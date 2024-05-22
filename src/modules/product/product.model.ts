@@ -12,7 +12,7 @@ const variantSchema = new Schema(
   },
   {
     _id: false,
-  }
+  },
 );
 
 const productSchema = new Schema<TProduct>(
@@ -51,7 +51,7 @@ const productSchema = new Schema<TProduct>(
   },
   {
     timestamps: true,
-  }
+  },
 );
 
 const Product = models?.Product || model("Product", productSchema);

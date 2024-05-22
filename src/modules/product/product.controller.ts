@@ -5,7 +5,7 @@ import ProductService from "./product.service";
 const createAProduct = async (
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) => {
   try {
     const product = req.body;
@@ -25,10 +25,10 @@ const createAProduct = async (
 const findAllProducts = async (
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) => {
   try {
-    const {searchTerm} = req.query;
+    const { searchTerm } = req.query;
 
     let result: {
       success: boolean;
@@ -37,7 +37,9 @@ const findAllProducts = async (
     };
 
     if (searchTerm) {
-      result = await ProductService.findProductsWithSearchTerm(searchTerm as string);
+      result = await ProductService.findProductsWithSearchTerm(
+        searchTerm as string,
+      );
     } else {
       result = await ProductService.findAllProductsFromDB();
     }
@@ -55,7 +57,7 @@ const findAllProducts = async (
 const findAProduct = async (
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) => {
   try {
     const { productId } = req.params;
@@ -75,7 +77,7 @@ const findAProduct = async (
 const updateAProduct = async (
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) => {
   try {
     const { productId } = req.params;
@@ -96,7 +98,7 @@ const updateAProduct = async (
 const deleteAProduct = async (
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) => {
   try {
     const { productId } = req.params;

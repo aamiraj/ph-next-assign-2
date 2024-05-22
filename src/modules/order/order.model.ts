@@ -19,7 +19,7 @@ const orderSchema = new Schema<TOrder>(
   },
   {
     timestamps: true,
-  }
+  },
 );
 
 orderSchema.post("save", async function (doc) {

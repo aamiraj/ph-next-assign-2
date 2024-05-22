@@ -5,7 +5,7 @@ import OrderValidation from "./order.validation";
 const createAOrder = async (
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) => {
   try {
     const data = req.body;
@@ -34,7 +34,7 @@ const createAOrder = async (
 const findAllOrders = async (
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) => {
   try {
     const { email } = req.query;
